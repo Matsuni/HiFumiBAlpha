@@ -119,34 +119,37 @@ bot.on("message", function(message) {
 	switch (command){
 			
 			case "Help":
-				message.author.sendMessage("I-I am here to help you!!");
+				message.delete();
+				message.author.sendMessage("I-I am here to help you!!");//message.author.sendMessage = O bot vai enviar uma mensagem privada para o autor da mensagem 
 				var embed = new Discord.RichEmbed()
-					.addField("!HHi", "I say Hi!")
-					.addField("!HGoodnight", "I say Goodnight!")
-					.addField("!HJojoReference", "Random Jojo Reference")
-					.addField("!HThanks OR H!ThankYou", "You are welcome")
-					.addField("!HSorry", "No problem")
-					.addField("!HNoticeMe", "I'll notice you")
-					.addField("!HSendNudes", "NO!!")
-					.addField("!HOmaeWaMouShindeiru", "N-N---")
-					.addField("!HAobaIsTrash", "HOW DARE YOU?!")
-					
-					.addField("!HCute", "I'll post a cute image from me! (You need to be lvl 3 to ask for this command!)")
-					.addField("!HDidYouDoIt?", "Just a meme...")
-					.addField("!H8ball", "Only questions that I can answer with Yes or No.")
-					.addField("!HSing", "I'll sing a song! (You need to be lvl 2 to ask for this command!) ")
-					.addField("!HRollDice", "Let's play a dice game!")
-					.addField("!HAreYouMyMaster?", "I'll tell you if I accept being your Master!")
-					.addField("!HPoem", "Write a poem and I'll post it in the chat!")
-					.addField("!HMyLevel", "I'll tell your current HifumiLevel and HifumiPoints!")
-					.addField("!HPlay", "Give me the link of a video and the auido from it will play!(It's not fully codded yet, but you can try it if you wish...)")
-					.addField("!HSkip", "I'll skip to the next audio!(It's not fully codded yet, but you can try it if you wish...)")
-					.addField("!HStop", "I'll stop all audio!(It's not fully codded yet, but you can try it if you wish...)")
-					.addField("!HNightMode", "Activate/Deactivate my night mode!")
+					.addField("H_Hi", "I say Hi!")//O addField permite que adicionemos um titulo e descrição ex: add.Field("Titulo","Descrição")
+					.addField("H_Goodnight", "I say Goodnight!")
+					.addField("H_JojoReference", "Random Jojo Reference")
+					.addField("H_Thanks OR H!ThankYou", "You are welcome")
+					.addField("H_Sorry", "No problem")
+					.addField("H_NoticeMe", "I'll notice you")
+					.addField("H_SendNudes", "NO!!")
+					.addField("H_OmaeWaMouShindeiru", "N-N---")
+					.addField("H_AobaIsTrash", "HOW DARE YOU?!")
+					.addField("H_Pat", "Give someone a comfy pat!")
+					.addField("H_Delet", "Politely ask someone to delete their message!")
+					.addField("H_Reverse", "Use this when someone tries to roast you!")
+					.addField("H_Cute", "I'll post a cute image from me! (You need to be lvl 3 to ask for this command!)")
+					.addField("H_DidYouDoIt?", "Just a meme...")
+					.addField("H_8ball", "Only questions that I can answer with Yes or No.")
+					.addField("H_Sing", "I'll sing a song! (You need to be lvl 2 to ask for this command!) ")
+					.addField("H_RollDice", "Let's play a dice game!")
+					.addField("H_AreYouMyMaster?", "I'll tell you if I accept being your Master!")
+					.addField("H_Poem", "Write a poem and I'll post it in the chat!")
+					.addField("H_Vs", "Please don't fight!")	
+					.addField("H_MyLevel", "I'll tell your current HifumiLevel and HifumiPoints!")
+					.addField("H_Play", "Give me the link of a video and the auido from it will play!(It's not fully codded yet, but you can try it if you wish...)")
+					.addField("H_Skip", "I'll skip to the next audio!(It's not fully codded yet, but you can try it if you wish...)")
+					.addField("H_Stop", "I'll stop all audio!(It's not fully codded yet, but you can try it if you wish...)")
+					.addField("H_NightMode", "Activate/Deactivate my night mode!")
 					.setColor(132344)
 					.setThumbnail(message.author.avatarURL)
 				message.author.sendEmbed(embed);
-				break;
 			case "Hi":
 				message.channel.sendMessage("H-H-Hello!! (づ｡◕‿‿◕｡)づ");
 				break;
@@ -277,6 +280,19 @@ bot.on("message", function(message) {
 				if (args[0]) message.channel.send("D-DELETE THIS "+args[0], {file:﻿"https://i.imgur.com/xga6glR.jpg"});
 				else message.channel.send("D-DELETE THIS !", {file:﻿"https://i.imgur.com/xga6glR.jpg"});
 				userData.points= userData.points - 1;
+				break;
+			case "Reverse":
+				message.delete();
+				message.channel.send({file:﻿"https://i.imgur.com/DdYo9Lq.jpg"});
+				break;
+			case "Pat": 
+				message.delete();
+				args[0] = message.guild.member(message.mentions.users.first()); 
+				if (args[0]) message.channel.send(args[0] + " gets a comfy pat!", {file:﻿"https://images5.alphacoders.com/837/837553.png"});
+				else{ 
+					message.channel.send("Y-You need to tell me who to pat!");
+					userData.points= userData.points - 1;
+				}	
 				break;
 			case "Play":
 				if(!args[1]) {
