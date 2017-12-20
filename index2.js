@@ -116,7 +116,7 @@ bot.on("message", function(message) {
   fs.writeFile("./userPoints2.json", JSON.stringify(points), (err) => {
     if (err) console.error(err)
   });
-	switch (command){
+	switch (command.toLowerCase()){
 			
 			case "Help":
 				message.delete();
@@ -150,7 +150,7 @@ bot.on("message", function(message) {
 					.setColor(132344)
 					.setThumbnail(message.author.avatarURL)
 				message.author.sendEmbed(embed);
-			case "Hi":
+			case "hi":
 				message.channel.sendMessage("H-H-Hello!! (づ｡◕‿‿◕｡)づ");
 				break;
 			case "Goodnight":
