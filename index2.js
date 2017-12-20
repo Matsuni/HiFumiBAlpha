@@ -116,7 +116,7 @@ bot.on("message", function(message) {
   fs.writeFile("./userPoints2.json", JSON.stringify(points), (err) => {
     if (err) console.error(err)
   });
-	switch (command.toUperCase()){
+	switch (command.toLowerCase()){
 			
 			case "Help":
 				message.delete();
